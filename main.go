@@ -6,6 +6,5 @@ import (
 )
 
 func main() {
-	beego.SetStaticPath("/bootstrap", "static/lib/bootstrap-5.0.2-dist")
 	beego.Run()
 }
