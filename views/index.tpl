@@ -12,16 +12,14 @@
   <div class="description">
     Beego is a simple & powerful Go web framework which is inspired by tornado and sinatra.
   </div>
+  <form action="/" method="post">
+    <div class="mb-3">
+      <label for="changeLogTextarea" class="form-label">Example textarea</label>
+      <textarea class="form-control" id="changeLogTextarea" name="text" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </header>
-<footer>
-  <div class="author">
-    Official website:
-    <a href="http://{{.Website}}">{{.Website}}</a> /
-    Contact me:
-    <a class="email" href="mailto:{{.Email}}">{{.Email}}</a>
-  </div>
-</footer>
-<div class="backdrop"></div>
 {{ end }}
 
 {{ define "Scripts" }}
