@@ -15,7 +15,7 @@
   <form action="/" method="post">
     <div class="mb-3">
       <label for="changeLogTextarea" class="form-label">Example textarea</label>
-      <textarea class="form-control" id="changeLogTextarea" name="text" rows="3"></textarea>
+      <textarea class="form-control" id="changeLogTextarea" name="text" rows="15"></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
