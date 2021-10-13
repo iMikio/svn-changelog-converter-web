@@ -11,11 +11,6 @@
     {{ block "HtmlHead" . }}{{ end }}
   </head>
 <body class="d-flex flex-column h-100">
-  <nav class="navbar sticky-top navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Sticky top</a>
-    </div>
-  </nav>
   <main class="flex-shrink-0">
     <div class="container">
     {{ block "LayoutContent" . }}{{ end }}
