@@ -17,12 +17,13 @@ func init() {
 	if runmode == "prod" {
 		config := `{
 			"filename":"logs/appname.log",
-			"separate":["emergency", "alert", "critical", "error", "warning", "notice", "info", "debug"],
-			"maxdays":90
+			"separate":["emergency", "alert", "critical", "error", "warning", "notice", "info"],
+			"maxdays":30
 			}`
 		config = strings.Replace(config, "appname", beego.BConfig.AppName, 1)
 		logs.SetLogger(logs.AdapterMultiFile, config)
+		logs.SetLevel(logs.LevelInfo)
 	}
-	logs.Async()
+	logs.Async(1e3)
 	logs.Info("runmode is %v", runmode)
 }
