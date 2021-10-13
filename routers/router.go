@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"github.com/iMikio/SVNChangeLogToCSV-web/controllers"
+	"github.com/iMikio/svn-changelog-converter-web/controllers"
 
 	beego "github.com/beego/beego/v2/server/web"
 )

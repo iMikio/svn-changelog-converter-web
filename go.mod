@@ -1,4 +1,4 @@
-module github.com/iMikio/SVNChangeLogToCSV-web
+module github.com/iMikio/svn-changelog-converter-web
 
 go 1.16
 

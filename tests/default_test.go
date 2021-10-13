@@ -7,7 +7,7 @@ import (
 	"runtime"
 	"testing"
 
-	_ "github.com/iMikio/SVNChangeLogToCSV-web/routers"
+	_ "github.com/iMikio/svn-changelog-converter-web/routers"
 
 	"github.com/beego/beego/v2/core/logs"
 	beego "github.com/beego/beego/v2/server/web"
