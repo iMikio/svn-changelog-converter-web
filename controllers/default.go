@@ -4,9 +4,6 @@ import (
 	"bytes"
 	"strconv"
 
-	"golang.org/x/text/encoding/japanese"
-	"golang.org/x/text/transform"
-
 	"github.com/beego/beego/v2/core/logs"
 	beego "github.com/beego/beego/v2/server/web"
 	"github.com/iMikio/svn-changelog-converter-web/models"
@@ -52,13 +49,7 @@ func (c *MainController) Post() {
 		rw.Header().Set("Content-Disposition", "attachment; filename=changelog.csv")
 	}
 
-	if code == "shift-jis" {
-		tw := transform.NewWriter(bf, japanese.ShiftJIS.NewEncoder())
-		defer tw.Close()
-		models.WriteCsv(tw, parsed, comma, true)
-	} else {
-		models.WriteCsv(bf, parsed, comma, false)
-	}
+	models.WriteCsv(bf, parsed, comma, &code)
 	rw.Header().Set("Content-Length", strconv.Itoa(bf.Len()))
 	bf.WriteTo(rw)
 }
