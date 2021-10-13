@@ -11,11 +11,6 @@
     {{ block "HtmlHead" . }}{{ end }}
   </head>
 <body class="d-flex flex-column h-100">
-  <nav class="navbar sticky-top navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Sticky top</a>
-    </div>
-  </nav>
   <main class="flex-shrink-0">
     <div class="container">
     {{ block "LayoutContent" . }}{{ end }}
@@ -26,10 +21,7 @@
     <div class="container">
       <span class="text-muted">
         <div class="author">
-          Official website:
-          <a href="http://{{.Website}}">{{.Website}}</a> /
-          Contact me:
-          <a class="email" href="mailto:{{.Email}}">{{.Email}}</a>
+          Created based on <a href="https://beego.me">beego</a>.
         </div>
       </span>
     </div>
