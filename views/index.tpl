@@ -27,10 +27,10 @@
         <label for="characterCodeButton" class="form-label">Choose character code.</label>
       </div>
       <div class="btn-group" role="group" id="characterCodeButton" aria-label="character code button group">
-        <input type="radio" class="btn-check" name="code" id="code1" value="utf-8" autocomplete="off" checked>
+        <input type="radio" class="btn-check" name="code" id="code1" value="utf-8" autocomplete="off">
         <label class="btn btn-outline-primary" for="code1">UTF-8</label>
       
-        <input type="radio" class="btn-check" name="code" id="code2" value="shift-jis" autocomplete="off">
+        <input type="radio" class="btn-check" name="code" id="code2" value="shift-jis" autocomplete="off" checked>
         <label class="btn btn-outline-primary" for="code2">Shift-JIS</label>
       </div>
     </div>
