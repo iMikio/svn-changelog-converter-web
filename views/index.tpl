@@ -23,7 +23,7 @@
       <label for="changeLogTextarea" class="form-label">Please enter changelog.</label>
       <textarea class="form-control" id="changeLogTextarea" name="text" rows="15"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Convert</button>
   </form>
 </header>
 {{ end }}
