@@ -5,9 +5,9 @@ import (
 	"io"
 )
 
-func WriteCsv(w io.Writer, s *[][]string) error {
+func WriteCsv(w io.Writer, s *[][]string, comma rune) error {
 	cw := csv.NewWriter(w)
-	cw.Comma = rune('\t')
+	cw.Comma = rune(comma)
 	defer cw.Flush()
 	return cw.WriteAll(*s)
 }

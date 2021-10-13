@@ -2,19 +2,25 @@
 
 {{ define "HtmlHead" }}
 
-<title>Beego</title>
+<title>SVN ChangeLog Converter</title>
 {{ end }}
 <!DOCTYPE html>
 
 {{ define "LayoutContent" }}
 <header>
-  <h1 class="logo">Welcome to Beego</h1>
-  <div class="description">
-    Beego is a simple & powerful Go web framework which is inspired by tornado and sinatra.
-  </div>
+  <h1 class="logo">SVN ChangeLog Converter</h1>
   <form action="/" method="post">
     <div class="mb-3">
-      <label for="changeLogTextarea" class="form-label">Example textarea</label>
+      <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <input type="radio" class="btn-check" name="type" id="type1" value="csv" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="type1">CSV</label>
+      
+        <input type="radio" class="btn-check" name="type" id="type2" value="tsv" autocomplete="off">
+        <label class="btn btn-outline-primary" for="type2">TSV</label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="changeLogTextarea" class="form-label">Please enter changelog.</label>
       <textarea class="form-control" id="changeLogTextarea" name="text" rows="15"></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -24,5 +30,4 @@
 
 {{ define "Scripts" }}
 {{ end }}
-
 </html>

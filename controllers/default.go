@@ -21,6 +21,8 @@ func (c *MainController) Get() {
 
 func (c *MainController) Post() {
 	s := c.GetString("text")
+	typ := c.GetString("type")
+	logs.Debug("type is:%s", typ)
 	// limit for 1M
 	if TextBytes := len(s); TextBytes > 1048576 {
 		logs.Warning("I don't support to sizes larger than 1MB text. size:%v", TextBytes)
@@ -35,13 +37,20 @@ func (c *MainController) Post() {
 	}
 
 	rw := c.Ctx.ResponseWriter
-	rw.Header().Set("Content-Type", "text/tab-separated-values")
-	rw.Header().Set("Content-Disposition", "attachment; filename=changelog.tsv")
-	// rw.Header().Set("Content-Type", "text/csv")
-	// rw.Header().Set("Content-Disposition", "attachment; filename=changelog.csv")
 
 	bf := &bytes.Buffer{}
-	models.WriteCsv(bf, parsed)
+	var comma rune
+	if typ == "tsv" {
+		rw.Header().Set("Content-Type", "text/tab-separated-values")
+		rw.Header().Set("Content-Disposition", "attachment; filename=changelog.tsv")
+		comma = rune('\t')
+	} else {
+		// csv
+		rw.Header().Set("Content-Type", "text/csv")
+		rw.Header().Set("Content-Disposition", "attachment; filename=changelog.csv")
+		comma = rune(',')
+	}
+	models.WriteCsv(bf, parsed, comma)
 	rw.Header().Set("Content-Length", strconv.Itoa(bf.Len()))
 	bf.WriteTo(rw)
 }
