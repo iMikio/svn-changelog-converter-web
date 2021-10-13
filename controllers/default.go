@@ -41,14 +41,14 @@ func (c *MainController) Post() {
 	bf := &bytes.Buffer{}
 	var comma rune
 	if typ == "tsv" {
+		comma = rune('\t')
 		rw.Header().Set("Content-Type", "text/tab-separated-values")
 		rw.Header().Set("Content-Disposition", "attachment; filename=changelog.tsv")
-		comma = rune('\t')
 	} else {
 		// csv
+		comma = rune(',')
 		rw.Header().Set("Content-Type", "text/csv")
 		rw.Header().Set("Content-Disposition", "attachment; filename=changelog.csv")
-		comma = rune(',')
 	}
 	models.WriteCsv(bf, parsed, comma)
 	rw.Header().Set("Content-Length", strconv.Itoa(bf.Len()))
