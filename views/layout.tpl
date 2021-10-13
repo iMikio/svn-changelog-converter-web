@@ -26,10 +26,7 @@
     <div class="container">
       <span class="text-muted">
         <div class="author">
-          Official website:
-          <a href="http://{{.Website}}">{{.Website}}</a> /
-          Contact me:
-          <a class="email" href="mailto:{{.Email}}">{{.Email}}</a>
+          Created based on <a href="https://beego.me">beego</a>.
         </div>
       </span>
     </div>
