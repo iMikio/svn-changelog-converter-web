@@ -4,6 +4,9 @@ import (
 	"bytes"
 	"strconv"
 
+	"golang.org/x/text/encoding/japanese"
+	"golang.org/x/text/transform"
+
 	"github.com/beego/beego/v2/core/logs"
 	beego "github.com/beego/beego/v2/server/web"
 	"github.com/iMikio/SVNChangeLogToCSV-web/models"
@@ -22,7 +25,7 @@ func (c *MainController) Get() {
 func (c *MainController) Post() {
 	s := c.GetString("text")
 	typ := c.GetString("type")
-	logs.Debug("type is:%s", typ)
+	code := c.GetString("code")
 	// limit for 1M
 	if TextBytes := len(s); TextBytes > 1048576 {
 		logs.Warning("I don't support to sizes larger than 1MB text. size:%v", TextBytes)
@@ -50,7 +53,14 @@ func (c *MainController) Post() {
 		rw.Header().Set("Content-Type", "text/csv")
 		rw.Header().Set("Content-Disposition", "attachment; filename=changelog.csv")
 	}
-	models.WriteCsv(bf, parsed, comma)
+
+	if code == "shift-jis" {
+		tw := transform.NewWriter(bf, japanese.ShiftJIS.NewEncoder())
+		defer tw.Close()
+		models.WriteCsv(tw, parsed, comma, true)
+	} else {
+		models.WriteCsv(bf, parsed, comma, false)
+	}
 	rw.Header().Set("Content-Length", strconv.Itoa(bf.Len()))
 	bf.WriteTo(rw)
 }
