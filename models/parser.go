@@ -39,7 +39,6 @@ func formatLineCode(s string) string {
 
 func parseRow(row *string) (*[]string, error) {
 	patternRex := regexp.MustCompile(`(?s)r(?P<Revision>[0-9]+) \| (?P<User>.*) \| (?P<Date>.*?)\s\s(?P<Comment>.*)\s`)
-	// patternRex := regexp.MustCompile(`(?s)r(?P<Revision>[0-9]+) \| (?P<User>.*) \| (?P<Date>.*?)[\r\n]{2,}(?P<Comment>.*)\r\n`)
 	group := getGroupRegex(patternRex, row)
 	result := []string{}
 	result = append(result, group["Revision"])
