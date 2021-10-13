@@ -23,6 +23,7 @@ func (c *MainController) Post() {
 	s := c.GetString("text")
 	// limit for 1M
 	if TextBytes := len(s); TextBytes > 1048576 {
+		logs.Warning("I don't support to sizes larger than 1MB text. size:%v", TextBytes)
 		c.Data["json"] = "I don't support to sizes larger than 1MB text."
 		c.Abort("400")
 	}
